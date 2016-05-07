@@ -246,7 +246,7 @@ a {
 #container .left-col .overlay {
   width: 100%;
   height: 180px;
-  background-color: #000;
+  background-color: #6766af;
   position: absolute;
   opacity: 0.7;
 }
@@ -1643,19 +1643,51 @@ pre .css ~ * .id {
 .footer-right {
   float: right;
 }
-.share {
-  padding: 0px 75px 30px 40px;
-  margin-bottom: 15px;
+.bdsharebuttonbox {
+  padding-left: 40px;
 }
-.back_home {
-  float: right;
+.bdsharebuttonbox a {
+  text-indent: 0 !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  text-align: center;
+  width: 40px !important;
+  line-height: 40px !important;
+  height: 40px !important;
+  webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.3);
 }
-.back_home a {
-  font-weight: bold;
-  margin-left: 10px;
+.bdsharebuttonbox a i {
+  font-size: 25px;
 }
-.back_home a:hover {
-  color: #6e6e6e;
+.bdsharebuttonbox a:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  color: #fff !important;
+}
+.bds_tsina {
+  background: #db332f !important;
+}
+.bds_sqq {
+  background: #1cbcef !important;
+}
+.bds_qzone {
+  background: #ffd10a !important;
+}
+.bds_weixin {
+  background: #8cdc49 !important;
+}
+.bds_more {
+  background: #8c8c8c !important;
+}
+.ds-textarea-wrapper.ds-rounded-top {
+  background: #fff url("../img/plbj.png") no-repeat right bottom !important;
 }
 #page-nav {
   text-align: center;
