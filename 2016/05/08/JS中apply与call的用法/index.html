@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JS中apply与call的用法 | ypzhou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ECAMScript 3给Function的原型定义了两个方法，它们是Function.prototype.call和Function.prototype.apply。call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。call 和 apply二者的作用完全一样，只是接受参数的方式不太一样。
+方法定义appl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS中apply与call的用法">
+<meta property="og:url" content="http://yoursite.com/2016/05/08/JS中apply与call的用法/index.html">
+<meta property="og:site_name" content="ypzhou">
+<meta property="og:description" content="ECAMScript 3给Function的原型定义了两个方法，它们是Function.prototype.call和Function.prototype.apply。call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。call 和 apply二者的作用完全一样，只是接受参数的方式不太一样。
+方法定义appl">
+<meta property="og:updated_time" content="2016-05-22T16:08:00.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS中apply与call的用法">
+<meta name="twitter:description" content="ECAMScript 3给Function的原型定义了两个方法，它们是Function.prototype.call和Function.prototype.apply。call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。call 和 apply二者的作用完全一样，只是接受参数的方式不太一样。
+方法定义appl">
+  
+    <link rel="alternative" href="/atom.xml" title="ypzhou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1462631512_5012438.css" />
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://m.tiebaimg.com/timg?wapp&amp;quality=80&amp;size=b150_150&amp;subsize=20480&amp;cut_x=0&amp;cut_w=0&amp;cut_y=0&amp;cut_h=0&amp;sec=1369815402&amp;srctrace&amp;di=5b2f4f249e9c5ff8d602e1c3c17e3b69&amp;wh_rate=null&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F472309f790529822f4f4ba96d5ca7bcb0b46d4a4.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ypzhou</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<!--<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						-->
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhouyupeng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/自执行函数/" style="font-size: 10px;">自执行函数</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ypzhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://m.tiebaimg.com/timg?wapp&amp;quality=80&amp;size=b150_150&amp;subsize=20480&amp;cut_x=0&amp;cut_w=0&amp;cut_y=0&amp;cut_h=0&amp;sec=1369815402&amp;srctrace&amp;di=5b2f4f249e9c5ff8d602e1c3c17e3b69&amp;wh_rate=null&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F472309f790529822f4f4ba96d5ca7bcb0b46d4a4.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ypzhou</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhouyupeng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-JS中apply与call的用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/08/JS中apply与call的用法/" class="article-date">
+  	<time datetime="2016-05-08T14:17:32.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS中apply与call的用法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apply/">apply</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/call/">call</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ECAMScript 3给Function的原型定义了两个方法，它们是Function.prototype.call和Function.prototype.apply。<br>call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，<strong>就是为了改变函数体内部 this 的指向</strong>。<br>call 和 apply二者的作用完全一样，只是接受参数的方式不太一样。</p>
+<h1 id="方法定义"><a href="#方法定义" class="headerlink" title="方法定义"></a>方法定义</h1><h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><p>Function.apply(obj,args)方法能接收两个参数：<br>obj：这个对象将代替Function类里this对象<br>args：这个是数组或<a href="#item1">类数组</a>，apply方法把这个集合中的元素作为参数传递给被调用的函数。<br><a id="more"></a></p>
+<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>call方法与apply方法的第一个参数是一样的，只不过第二个参数是一个参数列表<br>在非严格模式下当我们第一个参数传递为null或undefined时，函数体内的this会指向默认的宿主对象，在浏览器中则是window<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>===<span class="built_in">window</span>);</span><br><span class="line">&#125;</span><br><span class="line">test.apply(<span class="literal">null</span>);<span class="comment">//true</span></span><br><span class="line">test.call(<span class="literal">undefined</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><h2 id="“劫持”别人的方法"><a href="#“劫持”别人的方法" class="headerlink" title="“劫持”别人的方法"></a>“劫持”别人的方法</h2><p>此时foo中的logName方法将被bar引用 ，this指向了bar<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">	name:<span class="string">"mingming"</span>,</span><br><span class="line">	logName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar=&#123;</span><br><span class="line">	name:<span class="string">"xiaowang"</span></span><br><span class="line">&#125;;</span><br><span class="line">foo.logName.call(bar);<span class="comment">//xiaowang</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;      </span><br><span class="line">    <span class="keyword">this</span>.name = name;      </span><br><span class="line">    <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;      </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);      </span><br><span class="line">    &#125;      </span><br><span class="line">&#125;      </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;    </span><br><span class="line">    Animal.call(<span class="keyword">this</span>, name);    </span><br><span class="line">&#125;      </span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">"Black Cat"</span>);     </span><br><span class="line">cat.showName();  <span class="comment">//Black Cat</span></span><br></pre></td></tr></table></figure>
+<p>在实际开发中，经常会遇到this指向被不经意改变的场景。<br>有一个局部的fun方法，fun被作为普通函数调用时，fun内部的this指向了window，但我们往往是想让它指向该#test节点，见如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.id=<span class="string">"window"</span>;</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#test'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.id);<span class="comment">//test</span></span><br><span class="line">    <span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="keyword">this</span>.id);</span><br><span class="line">    &#125;</span><br><span class="line">    fun();<span class="comment">//window</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用call,apply我们就可以轻松的解决这种问题了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.id=<span class="string">"window"</span>;</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#test'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.id);<span class="comment">//test</span></span><br><span class="line">    <span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="keyword">this</span>.id);</span><br><span class="line">    &#125;</span><br><span class="line">    fun.call(<span class="keyword">this</span>);<span class="comment">//test</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然你也可以这样做，不过在ECMAScript 5的strict模式下，这种情况下的this已经被规定为不会指向全局对象，而是undefined：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.id=<span class="string">"window"</span>;</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#test'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.id);<span class="comment">//test</span></span><br><span class="line">    <span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(that.id);</span><br><span class="line">    &#125;</span><br><span class="line">    fun();<span class="comment">//test</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span></span><br><span class="line">    alert ( <span class="keyword">this</span> );    <span class="comment">// 输出：undefined</span></span><br><span class="line">&#125;</span><br><span class="line">func();</span><br></pre></td></tr></table></figure>
+<h1 id="其他用法"><a href="#其他用法" class="headerlink" title="其他用法"></a>其他用法</h1><p></p><h1 id="item1">类数组</h1><br>这里把符合以下条件的对象称为类数组<p></p>
+<ol>
+<li>具有length属性</li>
+<li>按索引方式存储数据</li>
+<li>不具有数组的push,pop等方法</li>
+</ol>
+<p><strong>常见类数组有 arguments,NodeList!</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">Array</span>.prototype.push.call(<span class="built_in">arguments</span>,<span class="number">4</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>);<span class="comment">//[1, 2, 3, 4]</span></span><br><span class="line">&#125;)(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这样就往arguments中push一个4进去了</p>
+<p><strong>Array.prototype.push 页可以实现两个数组合并</strong></p>
+<p>同样push方法没有提供push一个数组,但是它提供了push(param1,param,…paramN) 所以同样也可以通过apply来装换一下这个数组,即:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>);  </span><br><span class="line"><span class="keyword">var</span> arr2=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"4"</span>,<span class="string">"5"</span>,<span class="string">"6"</span>);  </span><br><span class="line"><span class="built_in">Array</span>.prototype.push.apply(arr1,arr2);  </span><br><span class="line"><span class="built_in">console</span>.log(arr1);<span class="comment">//["1", "2", "3", "4", "5", "6"]</span></span><br></pre></td></tr></table></figure></p>
+<p>也可以这样理解,arr1调用了push方法,参数是通过apply将数组装换为参数列表的集合.</p>
+<p><strong>再比如我想求类数组中的最大值</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> maxNum = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,<span class="built_in">arguments</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(maxNum);<span class="comment">//56</span></span><br><span class="line">&#125;)(<span class="number">34</span>,<span class="number">2</span>,<span class="number">56</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>判断类型</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="number">123</span>)) <span class="comment">//[object Number]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="string">'123'</span>)) <span class="comment">//[object String]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>)) <span class="comment">//[object Undefined]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="literal">true</span>)) <span class="comment">//[object Boolean]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;)) <span class="comment">//[object Object]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call([])) <span class="comment">//[object Array]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)) <span class="comment">//[object Function]</span></span><br></pre></td></tr></table></figure></p>
+<p>有错误的地方欢迎拍砖</p>
+<p><strong>参考</strong><br>JavaScript设计模式与开发实践</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/23/JavaScript-prototype/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          JavaScript prototype
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/07/javascript自执行函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript自执行函数</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="iconfont bds_tsina" data-cmd="tsina" title="分享到新浪微博">&#xe601;</a>
+	<a href="javascipt:;" class="iconfont bds_sqq" data-cmd="sqq" title="分享到QQ好友">&#xe600;</i></a>
+	<a href="javascipt:;" class="iconfont bds_qzone" data-cmd="qzone" title="分享到QQ空间">&#xe602;</a>
+	<a href="javascipt:;" class="iconfont bds_weixin" data-cmd="weixin" title="分享到微信">&#xe603;</a>
+	<a href="javascipt:;" class="iconfont bds_more" data-cmd="more">&#xe604;</a>
+</div>
+<script>
+	window._bd_share_config = {
+		"common": {
+			"bdSnsKey": {},
+			"bdText": "",
+			"bdMini": "2",
+			"bdMiniList": false,
+			"bdPic": "",
+			"bdStyle": "0",
+			"bdSize": "32"
+		},
+		"share": {}
+	};
+	with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+</script>
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JS中apply与call的用法" data-title="JS中apply与call的用法" data-url="http://yoursite.com/2016/05/08/JS中apply与call的用法/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"pzhou"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 ypzhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

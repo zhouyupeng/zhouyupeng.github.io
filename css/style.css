@@ -499,7 +499,6 @@ a {
   position: relative;
   overflow: hidden;
   background: #88acdb;
-  -webkit-transition: all 0.2s ease-in;
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-pack: center;
@@ -512,7 +511,6 @@ a {
   -webkit-border-radius: 300px;
   border-radius: 300px;
   opacity: 0;
-  -webkit-transition: all 0.2s ease-in;
 }
 #header .profilepic img.show {
   width: 100%;
@@ -717,6 +715,34 @@ a {
 }
 #disqus_thread {
   padding: 0 40px;
+}
+.profilepic img {
+  -webkit-transition: -webkit-transform 1s ease-out;
+  -moz-transition: -moz-transform 1s ease-out;
+  -o-transition: -o-transform 1s ease-out;
+  -ms-transition: -ms-transform 1s ease-out;
+}
+.profilepic img:hover {
+  -webkit-transform: rotateZ(360deg);
+  -moz-transform: rotateZ(360deg);
+  -o-transform: rotateZ(360deg);
+  -ms-transform: rotateZ(360deg);
+  -webkit-transform: rotateZ(360deg);
+  -moz-transform: rotateZ(360deg);
+  -ms-transform: rotateZ(360deg);
+  transform: rotateZ(360deg);
+}
+#header .header-nav .social a:hover {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 .archives-wrap {
   position: relative;

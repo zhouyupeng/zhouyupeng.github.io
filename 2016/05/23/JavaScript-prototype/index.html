@@ -4,17 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>ypzhou</title>
+  <title>JavaScript prototype | ypzhou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ypzhou">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="原型是什么在 JavaScript 中，prototype 是函数的一个属性，每个函数中都有一个prototype属性，函数的原型为对象。它主要在函数用作构造函数时使用。
+123function Person()&amp;#123;&amp;#125;console.log(Person.prototype);//Object
+由于prototype属性包含的是一个对象，所有我们可以这样为原型上添加属性方法
+12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript prototype">
+<meta property="og:url" content="http://yoursite.com/2016/05/23/JavaScript-prototype/index.html">
 <meta property="og:site_name" content="ypzhou">
-<meta property="og:description">
+<meta property="og:description" content="原型是什么在 JavaScript 中，prototype 是函数的一个属性，每个函数中都有一个prototype属性，函数的原型为对象。它主要在函数用作构造函数时使用。
+123function Person()&amp;#123;&amp;#125;console.log(Person.prototype);//Object
+由于prototype属性包含的是一个对象，所有我们可以这样为原型上添加属性方法
+12">
+<meta property="og:updated_time" content="2016-05-23T15:11:34.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ypzhou">
-<meta name="twitter:description">
+<meta name="twitter:title" content="JavaScript prototype">
+<meta name="twitter:description" content="原型是什么在 JavaScript 中，prototype 是函数的一个属性，每个函数中都有一个prototype属性，函数的原型为对象。它主要在函数用作构造函数时使用。
+123function Person()&amp;#123;&amp;#125;console.log(Person.prototype);//Object
+由于prototype属性包含的是一个对象，所有我们可以这样为原型上添加属性方法
+12">
   
     <link rel="alternative" href="/atom.xml" title="ypzhou" type="application/atom+xml">
   
@@ -190,70 +200,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/26/hello-world/" class="article-date">
-  	<time datetime="2016-05-26T13:59:50.604Z" itemprop="datePublished">2016-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/26/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JavaScript-prototype" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaScript-prototype" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/05/23/JavaScript-prototype/" class="article-date">
@@ -269,12 +216,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/23/JavaScript-prototype/">JavaScript prototype</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript prototype
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prototype/">prototype</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -285,162 +243,108 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.name =  <span class="string">"zhou"</span>;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>也可以这样</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">	name : <span class="string">"zhou"</span>,</span><br><span class="line">	sayName : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prototype/">prototype</a></li></ul>
-	</div>
+<a id="more"></a>
+<p>当我们创建一个对象时<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Person();</span><br><span class="line">a.sayName();<span class="comment">//zhou</span></span><br></pre></td></tr></table></figure></p>
+<p>为什么a对象能调用Person.prototype中的属性呢，JavaScript给对象提供了一个名为<strong>__</strong>proto__的隐藏属性，</p>
+<p>这个对象会默认指向它构造函数的原型对象。上边的那个栗子a.<strong>__</strong>proto__ 就指向了Person.prototype</p>
+<p>a.<strong>__</strong>proto__ === Person.prototype//true</p>
+<p>虽然对象有 <strong>__</strong>proto__ 属性，</p>
+<p>但是千万别直接访问 <strong>__</strong>proto__ 属性，因为有些浏览器并不支持直接访问它。</p>
+<p>我们再来看看执行这段代码是引擎做了哪些事情。</p>
+<ol>
+<li>首先，尝试遍历a对象中的所有方法，发现没有sayName方法。</li>
+<li>查找sayName方法的请求被委托给了对象a的构造函数的原型，通过对象的<strong>__</strong>proto__指向了构造函数的原型Person.prototype。发现有这个方法。</li>
+</ol>
+<p>在看一个”类”继承另一个类的栗子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">A.prototype.name = <span class="string">"zhou"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">B.prototype = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B();</span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//zhou</span></span><br></pre></td></tr></table></figure>
+<p>再来看看执行这段代码是引擎做了哪些事情。</p>
+<ol>
+<li>尝试遍历对象b中的属性，发现没有找到name这个属性</li>
+<li>查找name属性的请求被委托给了对象b的构造函数的原型，它被b.<strong>__</strong>proto__指向了B.prototype，而B.prototype又被设置成了通过new A() new出来的一个对象。</li>
+<li>在该对象中没有找到name属性。于是请求继续被委托给了这个这个对象构造函数的原型A.prototype<br>4 在A.prototype 找到name属性，并返回</li>
+</ol>
+<h1 id="prototype-的典型示例"><a href="#prototype-的典型示例" class="headerlink" title="prototype 的典型示例"></a>prototype 的典型示例</h1><p>当我们用jQuery时，trim这个方法用来去空格很爽有木有。</p>
+<p>我们可以自己给String添加一个这样的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="built_in">String</span>.prototype.trim)&#123;</span><br><span class="line">	<span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s+)|(\s+$)/g</span>,<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log((<span class="string">"   qw    "</span>).trim());<span class="comment">//qw</span></span><br></pre></td></tr></table></figure></p>
+<p>有错误的地方欢迎拍砖</p>
 
       
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/23/JavaScript-prototype/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS中apply与call的用法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/08/JS中apply与call的用法/" class="article-date">
-  	<time datetime="2016-05-08T14:17:32.000Z" itemprop="datePublished">2016-05-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2016/05/26/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/08/JS中apply与call的用法/">JS中apply与call的用法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ECAMScript 3给Function的原型定义了两个方法，它们是Function.prototype.call和Function.prototype.apply。<br>call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，<strong>就是为了改变函数体内部 this 的指向</strong>。<br>call 和 apply二者的作用完全一样，只是接受参数的方式不太一样。</p>
-<h1 id="方法定义"><a href="#方法定义" class="headerlink" title="方法定义"></a>方法定义</h1><h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><p>Function.apply(obj,args)方法能接收两个参数：<br>obj：这个对象将代替Function类里this对象<br>args：这个是数组或<a href="#item1">类数组</a>，apply方法把这个集合中的元素作为参数传递给被调用的函数。<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apply/">apply</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/call/">call</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/08/JS中apply与call的用法/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-javascript自执行函数" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/07/javascript自执行函数/" class="article-date">
-  	<time datetime="2016-05-07T15:22:50.000Z" itemprop="datePublished">2016-05-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+          Hello World
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/07/javascript自执行函数/">javascript自执行函数</a>
-    </h1>
   
+    <a href="/2016/05/08/JS中apply与call的用法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS中apply与call的用法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>起因，</strong>今天在豪大大的JS开发群里有人问了一道题，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test=(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = a;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.a.e + <span class="keyword">this</span>.a.f + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        e:a,</span><br><span class="line">        f:b</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;(<span class="number">1</span>,<span class="number">8</span>)));</span><br><span class="line"><span class="built_in">console</span>.log(test(<span class="number">4</span>));</span><br></pre></td></tr></table></figure></p>
-<p>对此有点似懂非懂，于是就查阅了一番。<br>( function(){…} )()和( function (){…} () )是两种javascript立即执行函数的常见写法，最初我以为是一个括号包裹匿名函数，然后再在后面加个括号调用函数，最后达到函数定义后立即执行的目的，后来查看资料发现并非如此。要理解立即执行函数，需要先理解一些函数的基本概念。<br><strong>函数声明、函数表达式、匿名函数，立即执行函数</strong><br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自执行函数/">自执行函数</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/07/javascript自执行函数/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
 
+<div class="bdsharebuttonbox">
+	<a href="#" class="iconfont bds_tsina" data-cmd="tsina" title="分享到新浪微博">&#xe601;</a>
+	<a href="javascipt:;" class="iconfont bds_sqq" data-cmd="sqq" title="分享到QQ好友">&#xe600;</i></a>
+	<a href="javascipt:;" class="iconfont bds_qzone" data-cmd="qzone" title="分享到QQ空间">&#xe602;</a>
+	<a href="javascipt:;" class="iconfont bds_weixin" data-cmd="weixin" title="分享到微信">&#xe603;</a>
+	<a href="javascipt:;" class="iconfont bds_more" data-cmd="more">&#xe604;</a>
+</div>
+<script>
+	window._bd_share_config = {
+		"common": {
+			"bdSnsKey": {},
+			"bdText": "",
+			"bdMini": "2",
+			"bdMiniList": false,
+			"bdPic": "",
+			"bdStyle": "0",
+			"bdSize": "32"
+		},
+		"share": {}
+	};
+	with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+</script>
 
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JavaScript-prototype" data-title="JavaScript prototype" data-url="http://yoursite.com/2016/05/23/JavaScript-prototype/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"pzhou"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
-  
-  
+
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -464,8 +368,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
