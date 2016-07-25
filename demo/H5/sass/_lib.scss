@@ -1,0 +1,419 @@
+@mixin center($width: null, $height: null) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @if not $width and not $height {
+        transform: translate(-50%, -50%);
+    }
+    @else if $width and $height {
+        width: $width;
+        height: $height;
+        margin: -($height / 2) #{0 0} -($width / 2);
+    }
+    @else if not $height {
+        width: $width;
+        margin-left: -($width / 2);
+        transform: translateY(-50%);
+    }
+    @else {
+        height: $height;
+        margin-top: -($height / 2);
+        transform: translateX(-50%);
+    }
+}
+
+// easy-animation.scss 
+// Support browser's private prefix.
+$ea-prefix-for-webkit: true !default;
+$ea-prefix-for-mozilla: true !default;
+$ea-prefix-for-microsoft: true !default;
+$ea-prefix-for-opera: true !default;
+$ea-prefix-for-spec: true !default; // required for keyframe mixin
+// Disable all browser's private prefix.
+@mixin ea-disable-prefix-for-all() {
+    $ea-prefix-for-webkit: false;
+    $ea-prefix-for-mozilla: false;
+    $ea-prefix-for-microsoft: false;
+    $ea-prefix-for-opera: false;
+    $ea-prefix-for-spec: false;
+}
+
+// Example usage:
+// @include ea-transition(all 2s ease 0s);
+@mixin ea-transition($value, $prefixs: webkit moz ms o spec) {
+    @each $prefix in $prefixs {
+        @if $prefix==webkit {
+            @if $ea-prefix-for-webkit {
+                -webkit-transition: $value;
+            }
+        }
+        @else if $prefix==moz {
+            @if $ea-prefix-for-mozilla {
+                -moz-transition: $value;
+            }
+        }
+        @else if $prefix==ms {
+            @if $ea-prefix-for-microsoft {
+                -ms-transition: $value;
+            }
+        }
+        @else if $prefix==o {
+            @if $ea-prefix-for-opera {
+                -o-transition: $value;
+            }
+        }
+        @else if $prefix==spec {
+            @if $ea-prefix-for-spec {
+                transition: $value;
+            }
+        }
+        @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}
+
+// Example usage:
+// @include ea-transform(scale(1));
+@mixin ea-transform($value, $prefixs: webkit moz ms o spec) {
+    @each $prefix in $prefixs {
+        @if $prefix==webkit {
+            @if $ea-prefix-for-webkit {
+                -webkit-transform: $value;
+            }
+        }
+        @else if $prefix==moz {
+            @if $ea-prefix-for-mozilla {
+                -moz-transform: $value;
+            }
+        }
+        @else if $prefix==ms {
+            @if $ea-prefix-for-microsoft {
+                -ms-transform: $value;
+            }
+        }
+        @else if $prefix==o {
+            @if $ea-prefix-for-opera {
+                -o-transform: $value;
+            }
+        }
+        @else if $prefix==spec {
+            @if $ea-prefix-for-spec {
+                transform: $value;
+            }
+        }
+        @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}
+
+// Example usage:
+// @include ea-animation(wrap_s0_p1, 2s, ease, 0s, infinite);
+@mixin ea-animation($name, $duration, $function: ease, $delay: 0s, $count: infinite) {
+    -webkit-animation: $name $duration $function $delay $count;
+    -moz-animation: $name $duration $function $delay $count;
+    -ms-animation: $name $duration $function $delay $count;
+    -o-animation: $name $duration $function $delay $count;
+    animation: $name $duration $function $delay $count;
+}
+
+// Example usage:
+// @include ea-keyframes(wrap_s0_p1) {
+//   0% {
+//     opacity: 1;
+//     @include ea-transform(scale(1));
+//   }
+//   50% {
+//     opacity: 0.8;
+//     @include ea-transform(scale(0.8));
+//   }
+//   100% {
+//     opacity: 1;
+//     @include ea-transform(scale(1));
+//   }
+// }
+@mixin ea-keyframes($name) {
+    $_ea-prefix-for-webkit: $ea-prefix-for-webkit;
+    $_ea-prefix-for-mozilla: $ea-prefix-for-mozilla;
+    $_ea-prefix-for-microsoft: $ea-prefix-for-microsoft;
+    $_ea-prefix-for-opera: $ea-prefix-for-opera;
+    $_ea-prefix-for-spec: $ea-prefix-for-spec;
+    @if $_ea-prefix-for-webkit {
+        @include ea-disable-prefix-for-all();
+        $ea-prefix-for-webkit: true;
+        @-webkit-keyframes #{$name} {
+            @content;
+        }
+    }
+    @if $_ea-prefix-for-mozilla {
+        @include ea-disable-prefix-for-all();
+        $ea-prefix-for-mozilla: true;
+        @-moz-keyframes #{$name} {
+            @content;
+        }
+    }
+    @if $_ea-prefix-for-microsoft {
+        @include ea-disable-prefix-for-all();
+        $ea-prefix-for-microsoft: true;
+        @-ms-keyframes #{$name} {
+            @content;
+        }
+    }
+    @if $_ea-prefix-for-opera {
+        @include ea-disable-prefix-for-all();
+        $ea-prefix-for-opera: true;
+        @-o-keyframes #{$name} {
+            @content;
+        }
+    }
+    @if $_ea-prefix-for-spec {
+        @include ea-disable-prefix-for-all();
+        $ea-prefix-for-spec: true;
+        @keyframes #{$name} {
+            @content;
+        }
+    }
+    $ea-prefix-for-webkit: $_ea-prefix-for-webkit;
+    $ea-prefix-for-mozilla: $_ea-prefix-for-mozilla;
+    $ea-prefix-for-microsoft: $_ea-prefix-for-microsoft;
+    $ea-prefix-for-opera: $_ea-prefix-for-opera;
+    $ea-prefix-for-spec: $_ea-prefix-for-spec;
+}
+
+@mixin transition($property, $value) {
+    @each $prefix in -webkit-,
+    -moz-,
+    -ms-,
+    -o-,
+    '' {
+        #{$prefix}#{$property}: $value;
+    }
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie);
+}
+
+@mixin ell() {
+    //
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+//.arrow{
+// @include arrow(bottom,10px,#F00);
+//
+@mixin arrow($direction, $size, $color) {
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+    border-width: $size;
+    cursor: pointer;
+    @if $direction==top {
+        border-style: dashed dashed solid dashed;
+        border-color: transparent transparent $color transparent;
+        border-top: none;
+    }
+    @else if $direction==bottom {
+        border-style: solid dashed dashed dashed;
+        border-color: $color transparent transparent transparent;
+        border-bottom: none;
+    }
+    @else if $direction==right {
+        border-style: dashed dashed dashed solid;
+        border-color: transparent transparent transparent $color;
+        border-right: none;
+    }
+    @else if $direction==left {
+        border-style: dashed solid dashed dashed;
+        border-color: transparent $color transparent transparent;
+        border-left: none;
+    }
+}
+
+// clearfix 
+@mixin clr {
+    &:after {
+        clear: both;
+        content: '.';
+        display: block;
+        height: 0;
+        line-height: 0;
+        overflow: hidden;
+    }
+    *height: 1%;
+}
+
+//@include font-dpr(16px);
+@mixin font-dpr($font-size) {
+    font-size: $font-size;
+    [data-dpr="2"] & {
+        font-size: $font-size * 2;
+    }
+    [data-dpr="3"] & {
+        font-size: $font-size * 3;
+    }
+}
+
+@mixin retainBorder($color:rgba(32, 35, 37, .24), $style:solid) {
+    /*retain 1px border start*/
+    .retainbt,
+    .retainbb,
+    .retainbl,
+    .retainbr,
+    .retainb {
+        position: relative !important
+    }
+    .retainbt:before,
+    .retainbb:before {
+        pointer-events: none;
+        position: absolute;
+        content: "";
+        height: 1px;
+        background: $color;
+        left: 0;
+        right: 0
+    }
+    .retainbt:before {
+        top: 0
+    }
+    .retainbb:before {
+        bottom: 0
+    }
+    .retainbl:before,
+    .retainbr:before {
+        pointer-events: none;
+        position: absolute;
+        content: "";
+        width: 1px;
+        background: $color;
+        top: 0;
+        bottom: 0
+    }
+    .retainbl:before {
+        left: 0
+    }
+    .retainbr:before {
+        right: 0
+    }
+    .retainb:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border: 1px $style $color;
+        pointer-events: none
+    }
+    @media (-webkit-min-device-pixel-ratio:1.5),
+    (min-device-pixel-ratio:1.5),
+    (min-resolution: 144dpi),
+    (min-resolution:1.5dppx) {
+        .retainbt:before,
+        .retainbb:after {
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5)
+        }
+        .retainbl:before,
+        .retainbr:before {
+            -webkit-transform: scaleX(.5);
+            transform: scaleX(.5)
+        }
+        .retainb:before {
+            width: 200%;
+            height: 200%;
+            -webkit-transform: scale(.5);
+            transform: scale(.5)
+        }
+        .retainbt:before,
+        .retainbl:before,
+        .retainb:before {
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0
+        }
+        .retainbb:before,
+        .retainbr:before {
+            -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%
+        }
+    }
+    @media (-webkit-device-pixel-ratio:1.5) {
+        .retainbt:before,
+        .retainbb:before {
+            -webkit-transform: scaleY(.6666);
+            transform: scaleY(.6666)
+        }
+        .retainbl:before,
+        .retainbr:before {
+            -webkit-transform: scaleX(.6666);
+            transform: scaleX(.6666)
+        }
+        .retainb:before {
+            width: 150%;
+            height: 150%;
+            -webkit-transform: scale(.6666);
+            transform: scale(.6666)
+        }
+    }
+    @media (-webkit-device-pixel-ratio:3) {
+        .retainbt:before,
+        .retainbb:before {
+            -webkit-transform: scaleY(.3333);
+            transform: scaleY(.3333)
+        }
+        .retainbl:before,
+        .retainbr:before {
+            -webkit-transform: scaleX(.3333);
+            transform: scaleX(.3333)
+        }
+        .retainb:before {
+            width: 300%;
+            height: 300%;
+            -webkit-transform: scale(.3333);
+            transform: scale(.3333)
+        }
+    }
+}
+
+
+// @mixin border{
+//   /*retain 1px border start*/
+//   .retainbt,.retainbb,.retainbl,.retainbr,.retainb { position: relative;position: relative !important}
+//   .retainbt:before,.retainbb:after {pointer-events: none;position: absolute;content: ""; height: 1px; background: rgba(32,35,37,.24);left: 0;right: 0}
+//   .retainbt:before {top: 0}
+//   .retainbb:after {bottom: 0}
+//   .retainbl:before,.retainbr:after {pointer-events: none;position: absolute;content: ""; width: 1px; background: rgba(32,35,37,.24); top: 0; bottom: 0}
+//   .retainbl:before {left: 0}
+//   .retainbr:after {right: 0}
+//   .retainb:after {position: absolute;content: "";top: 0;left: 0; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; height: 100%; border: 1px solid rgba(32,35,37,.24); pointer-events: none}
+   
+// @media (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(min-resolution: 144dpi),(min-resolution:1.5dppx) {
+//   .retainbt:before,.retainbb:after {-webkit-transform:scaleY(.5);transform: scaleY(.5) }
+//   .retainbl:before,.retainbr:after {-webkit-transform: scaleX(.5); transform: scaleX(.5) }
+//   .retainb:after { width: 200%; height: 200%;-webkit-transform: scale(.5); transform: scale(.5) }
+//   .retainbt:before,.retainbl:before,.retainb:after {-webkit-transform-origin: 0 0;transform-origin: 0 0}
+//   .retainbb:after,.retainbr:after { -webkit-transform-origin: 100% 100%;transform-origin: 100% 100%}
+// }
+ 
+// @media (-webkit-device-pixel-ratio:1.5) {
+// .retainbt:before,.retainbb:after { -webkit-transform: scaleY(.6666); transform: scaleY(.6666) }
+// .retainbl:before,.retainbr:after {-webkit-transform: scaleX(.6666); transform: scaleX(.6666)}
+// .retainb:after {width: 150%; height: 150%;-webkit-transform: scale(.6666); transform: scale(.6666) }
+// }
+ 
+// @media (-webkit-device-pixel-ratio:3) {
+// .retainbt:before,.retainbb:after { -webkit-transform: scaleY(.3333); transform: scaleY(.3333)}
+// .retainbl:before,.retainbr:after { -webkit-transform: scaleX(.3333); transform: scaleX(.3333)}
+// .retainb:after {width: 300%;height: 300%; -webkit-transform: scale(.3333);transform: scale(.3333)}
+// }
+// }

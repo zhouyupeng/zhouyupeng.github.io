@@ -1,0 +1,68 @@
+@import"lib";
+body {
+    background-color: #f0f0f0;
+}
+
+* {
+    box-size: border-box;
+}
+
+header {
+    width: 100%;
+    height: 1.375rem;
+    background-color: #3492e9;
+    a {
+        background-image: url("../image/back-ico.png");
+        position: absolute;
+        left: 0.46875rem;
+        top: 0.40625rem;
+        width: 0.359375rem;
+        height: 0.609375rem;
+        background-size: 100%;
+    }
+    h1 {
+        @include font-dpr(16px);
+        height: 1.375rem;
+        line-height: 1.375rem;
+        text-align: center;
+        color: #fff;
+    }
+}
+
+.search {
+    margin-top: 0.3125rem;
+    width: 100%;
+    height: 1.34375rem;
+    display: -webkit-box;
+    position: relative;
+    .search-btn {
+        width: 1.875rem;
+        height: 1.34375rem;
+        line-height: 1.34375rem;
+        background-color: #3492e9;
+        text-align: center;
+        color: #fff;
+
+        border-radius: 0.078125rem;
+        @include font-dpr(14px);
+        margin-right: 0.40625rem;
+    }
+    input {
+        display: block;
+        height: 1.34375rem;
+        margin-left: 0.375rem;
+        margin-right: 0.234375rem;
+        -webkit-box-flex: 1;
+        padding-left: 1.171875rem;
+        border: 1px solid #ddd;
+        background: #fff url("../image/search_ico.png") no-repeat 0.390625rem center;
+        border-radius: 0.046875rem;
+            background-size: 0.53125rem 0.53125rem;
+         @include font-dpr(16px);
+    }
+    .ico{
+
+    }
+}
+
+@include retainBorder;
