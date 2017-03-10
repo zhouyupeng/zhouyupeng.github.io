@@ -265,6 +265,7 @@
 
             $('#fpMask').on("touchmove", function(ev) {
                 ev.preventDefault();
+                ev.stoppropagation();
             });
         },
         hideMask: function() {
